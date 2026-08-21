@@ -1,4 +1,5 @@
-﻿using Bloxstrap.UI.Elements.Bootstrapper.Base;
+﻿using Bloxstrap.RobloxInterfaces;
+using Bloxstrap.UI.Elements.Bootstrapper.Base;
 using Bloxstrap.UI.ViewModels.Bootstrapper;
 using System;
 using System.Collections.Generic;
@@ -110,7 +111,10 @@ namespace Bloxstrap.UI.Elements.Bootstrapper
         {
             InitializeComponent();
 
-            _viewModel = new FluentDialogViewModel(this, aero);
+            string version = "Version: " + Utilities.GetRobloxVersionStr(Bootstrapper?.IsStudioLaunch ?? false);
+            string channel = "Bucket: " + Deployment.Channel;
+
+            _viewModel = new FluentDialogViewModel(this, aero, version, channel);
             DataContext = _viewModel;
             Title = App.Settings.Prop.BootstrapperTitle;
             Icon = App.Settings.Prop.BootstrapperIcon.GetIcon().GetImageSource();
