@@ -364,7 +364,7 @@ namespace Bloxstrap
                 return;
             }
 
-            string? channel = GetCurrentChannelFromArgs();
+            string? channel = Deployment.DefaultChannel; // production
 
             if (!String.IsNullOrEmpty(channel))
             {
